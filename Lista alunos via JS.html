@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>incluir</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function carregaAlunus(){
+            xmlHttp.onreadystatechange = function() {
+                    console.log("mudou status: " + this.readyState);
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log("Chegou resposta: " + this.responseText)
+                        document.getElementById("msg").innerHTML = this.responseText;
+                    }
+                }
+                xmlHttp.open("GET", "http://localhost/3dawmanha/ex10IncluirAlunoJS?nome=" + pNome +
+                "&email=" + pEmail + "&cpf=" + pCpf + "&matricula=" + pMat);
+                xmlHttp.send();
+        }
+    
+    </script>
+</head>
+<body onload="carregaAlunus();">
+    <h3>ESCIOLLHA O SEU DESTINO</h3>
+   <ul>
+        <li><a>  INCLUIR</a></li><br>
+        <li><a>  EXCLUIR</a></li><br>
+        <li><a>  ALTERAR</a></li><br>
+        <li><a>  EXIBIR</a></li><br>
+   </ul>
+</body>
+</html>
