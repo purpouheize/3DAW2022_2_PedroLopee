@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Exibição carros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function carregaCarros() {
+            let xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let objAlunos = this.responseText;
+                        let obj = JSON.parse(this.responseText);
+                        let x = 0;
+                        
+                        let valor = (obj[x].nome).localeCompare("undefined");
+                        if(valor!=0){
+                                for (x=0;x<obj.length;x++) {
+                                let linha = obj[x];
+                                carroPorCarro(linha);
+                            }
+                        }
+                    }
+                }
+                xmlHttp.open("GET", "http://localhost/exibir_todos_carros.php");
+                xmlHttp.send();
+        }
+
+        function carroPorCarro(linha) {
+            let tabela = document.getElementById("tabela");
+            let tr = document.createElement("tr");
+            
+            //ID
+            let tdId = document.createElement("td"); 
+            textnode = document.createTextNode(linha.id);
+            tdId.appendChild(textnode); 
+            tr.appendChild(tdId);
+
+            //Carro
+            let tdCarro = document.createElement("td"); 
+            textnode = document.createTextNode(linha.carro);
+            tdCarro.appendChild(textnode); 
+            tr.appendChild(tdCarro); 
+
+            //Cidade
+            let tdCidade = document.createElement("td");
+            textnode = document.createTextNode(linha.cidade);
+            tdCidade.appendChild(textnode); 
+            tr.appendChild(tdCidade);
+
+            //Estado
+            let tdEstado = document.createElement("td"); 
+            textnode = document.createTextNode(linha.estado);
+            tdEstado.appendChild(textnode); 
+            tr.appendChild(tdEstado); 
+
+            //Aluguel
+            let tdAluguel = document.createElement("td"); 
+            textnode = document.createTextNode(linha.aluguel);
+            tdAluguel.appendChild(textnode); 
+            tr.appendChild(tdAluguelAluguel); 
+
+            tabela.appendChild(tr);
+        }
+
+    </script>
+</head>
+<body onload="carregaCarros();">
+
+    <table id="tabela" style="border:1px solid;">
+        <tr style="border:1px solid">
+            <th style="border:1px solid; padding:0px 25px;">ID</th>
+            <th style="border:1px solid; padding:0px 25px;">Carro</th>
+            <th style="border:1px solid; padding:0px 25px;">Cidade</th>
+            <th style="border:1px solid; padding:0px 25px;">Estado</th>
+            <th style="border:1px solid; padding:0px 25px;">Aluguel</th>
+        </tr>
+    </table>
+</body>
+</html>

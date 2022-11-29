@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Carros na Cidade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function carregaCarros() 
+        {
+            let id = document.getElementById("cidade").value;
+            let xmlHttp = new XMLHttpRequest();
+
+            xmlHttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    let objAlunos = this.responseText;
+                    let obj = JSON.parse(this.responseText);
+                    carroPorCarro(obj);
+                }
+            }
+            xmlHttp.open("GET", "http://localhost/exibir_carro_cidade.php" + cidade);
+            xmlHttp.send();
+
+        }
+
+        function carroPorCarro(linha) {
+            let tabela = document.getElementById("tabela");
+            let tr = document.createElement("tr");
+
+            //ID
+            let tdId = document.createElement("td");
+            textnode = document.createTextNode(linha.id);
+            tdId.appendChild(textnode);
+            tr.appendChild(tdId);
+
+            //Carro
+            let tdCarro = document.createElement("td"); 
+            textnode = document.createTextNode(linha.carro);
+            tdCarro.appendChild(textnode); 
+            tr.appendChild(tdCarro); 
+
+            //Cidade
+            let tdCidade = document.createElement("td");
+            textnode = document.createTextNode(linha.cidade);
+            tdCidade.appendChild(textnode); 
+            tr.appendChild(tdCidade);
+
+            //Estado
+            let tdEstado = document.createElement("td"); 
+            textnode = document.createTextNode(linha.estado);
+            tdEstado.appendChild(textnode); 
+            tr.appendChild(tdEstado); 
+
+            //Aluguel
+            et tdAluguel = document.createElement("td"); 
+            textnode = document.createTextNode(linha.aluguel);
+            tdAluguel.appendChild(textnode); 
+            tr.appendChild(tdAluguel); 
+
+            tabela.appendChild(tr);
+            tabela.style.display = "table";
+            let input = document.getElementById("cidade");
+            input.setAttribute("onclick", "location.reload();");
+        }
+
+    </script>
+</head>
+
+<body>
+    
+    <form id="form">
+        <fieldset>
+            <legend style="font-size: 20px;">Em qual cidade deseja procurar?</legend>
+            <label>Cidade:</label>
+            <input type="text" name="cidade" id="cidade"><br><br>
+            <input type="button" name="envio" value="Enviar" onclick="carregaCarros();">
+        </fieldset>
+    </form>
+
+    <table id="tabela" style="border:1px solid; display: none;margin: 10px;">
+        <tr style="border:1px solid">
+            <th style="border:1px solid; padding:0px 25px;">ID</th>
+            <th style="border:1px solid; padding:0px 25px;">Carro</th>
+            <th style="border:1px solid; padding:0px 25px;">Cidade</th>
+            <th style="border:1px solid; padding:0px 25px;">Estado</th>
+            <th style="border:1px solid; padding:0px 25px;">Aluguel</th>
+        </tr>
+    </table>
+</body>
+
+</html>
