@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Inscrever Seleções</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function enviarForm() {
+            let nome = document.getElementById("nome").value;
+            let grupo = document.getElementById("grupo").value;
+            let tecnico = document.getElementById("tecnico").value;
+            let xmlHttp = new XMLHttpRequest();
+
+            xmlHttp.open("GET", "http://localhost/Catar2022/inserirSelecao?nome=" + nome +
+                "&grupo=" + grupo + "&tecnico=" + tecnico);
+            xmlHttp.send();
+
+            location.reload();
+        }
+    </script>
+</head>
+
+<body>
+    <h1>CATAR 2022</h1>
+    <ul id="index">
+        <li><a href="INDICE.html">INDICE</a></li>
+        <li><a href="inserirSelecao.html">Inscrever Seleções</a></li>
+        <li><a href="alterarSelecao.html">Alterar Seleções</a></li>
+        <li><a href="cadastroJogo.html">Cadastrar Partida</a></li>
+        <li><a href="calendarioTotal.html">Calendário Completo</a></li>
+        <li><a href="calendarioSelecao.html">Calendário de uma Seleção</a></li>
+        <li><a href="calendarioGrupo.html">Calendário de determinado grupo</a></li>
+        <li><a href="oitavas.html">Oitavas de Final</a></li>
+    </ul>
+    
+    <form id="formIncluir">
+        <fieldset>
+            <legend style="font-size: 20px;">Inscreva a seleção:</legend>   
+            <label>Seleção:</label>
+            <input type="text" name="nome" id="nome"><br><br>
+            <label>Grupo:</label>
+            <input type="text" name="grupo" id="grupo"><br><br>
+            <label>Técnico:</label>
+            <input type="text" name="tecnico" id="tecnico"><br><br>
+            <input type="button" name="envio" value="Enviar" onclick="enviarForm();">
+        </fieldset>
+    </form>
+</body>
+
+</html>
