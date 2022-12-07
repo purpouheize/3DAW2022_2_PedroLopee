@@ -52,7 +52,7 @@
             tr.appendChild(tdEstado); 
 
             //Aluguel
-            et tdAluguel = document.createElement("td"); 
+            let tdAluguel = document.createElement("td"); 
             textnode = document.createTextNode(linha.aluguel);
             tdAluguel.appendChild(textnode); 
             tr.appendChild(tdAluguel); 
@@ -66,7 +66,13 @@
     </script>
 </head>
 
-<body>
+<body><h3>Escolha o que deseja fazer:</h3>
+    <ul>
+        <li><a href="exibir_todos_carros.html">Exibir todos os carros disponíveis!</a></li>
+        <li><a href="exibir_carro_cidade.html">Mostrar carros por cidade</a></li>
+        <li><a href="alugarcarro.html">Mostrar carros por cidade</a></li>
+        <li><a href="disponibilizarcarro.html">Disponibilizar carro para alugar</a></li>
+    </ul>
     
     <form id="form">
         <fieldset>

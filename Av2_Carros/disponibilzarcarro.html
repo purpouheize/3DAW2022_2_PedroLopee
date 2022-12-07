@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Seleção</title>
+    <script>
+        function enviarForm() {
+            let grupo = document.getElementById("carro").value;
+
+            let xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", "http://localhost/Catar2022/disponibilizarcarro.php" + "&carro=" + carro);
+            xmlHttp.send();
+
+            location.reload();
+        }
+
+    </script>
+
+<body>
+    <body><h3>Escolha o que deseja fazer:</h3>
+     <ul>
+        <li><a href="exibir_todos_carros.html">Exibir todos os carros disponíveis!</a></li>
+        <li><a href="exibir_carro_cidade.html">Mostrar carros por cidade</a></li>
+        <li><a href="alugarcarro.html">Mostrar carros por cidade</a></li>
+        <li><a href="disponibilizarcarro.html">Disponibilizar carro para alugar</a></li>
+    </ul>
+        
+
+     <form id="formIncluir">
+        <fieldset>
+            <legend style="font-size: 20px;">Alguém não irá usar mais o carro? Quem será?</legend>
+            <label>Nome:</label>
+            <input type="text" name="nome" id="nome"><br><br> 
+            <label>Qual será o carro a estar disponível?</label>
+            <input type="text" name="carro" id="carro"><br><br>
+            <input type="button" name="envio" value="Enviar" onclick="enviarForm();">
+        </fieldset>
+    </form>
+</body>
+
+</html>

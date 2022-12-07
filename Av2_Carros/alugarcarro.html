@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Inscrever Seleções</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function enviarForm() {
+            let nome = document.getElementById("nome").value;
+            let grupo = document.getElementById("carro").value;
+            let xmlHttp = new XMLHttpRequest();
+
+            xmlHttp.open("GET",  "http://localhost/alugarcarro.php" + nome +
+                "&carro=" + carro);
+            xmlHttp.send();
+
+            location.reload();
+        }
+    </script>
+</head>
+
+<body>
+    <body><h3>Escolha o que deseja fazer:</h3>
+        <ul>
+            <li><a href="exibir_todos_carros.html">Exibir todos os carros disponíveis!</a></li>
+            <li><a href="exibir_carro_cidade.html">Mostrar carros por cidade</a></li>
+            <li><a href="alugarcarro.html">Mostrar carros por cidade</a></li>
+            <li><a href="disponibilizarcarro.html">Disponibilizar carro para alugar</a></li>
+        </ul>
+        
+    
+    <form id="formIncluir">
+        <fieldset>
+            <legend style="font-size: 20px;">Qual o nome de quem vai alugar?</legend>   
+            <label>Nome:</label>
+            <input type="text" name="nome" id="nome"><br><br>
+            <label>E qual será o carro a ser alugado?</label>
+            <input type="text" name="carro" id="carro"><br><br>
+            <input type="button" name="envio" value="Enviar" onclick="enviarForm();">
+        </fieldset>
+    </form>
+</body>
+
+</html>
